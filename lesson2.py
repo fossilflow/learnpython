@@ -11,91 +11,54 @@ else:
 
 # if задание 2, сравнение 2 строк
 def comparator(a, b):
-    if a is not str or b is not str:
+    if not (isinstance(a, str) and isinstance(b, str)):
         return 0 
-    if a is b:
+    if a == b:
         return 1
-    elif len(a) <len (b):
+    elif len(a) >len (b):
         return 2 
-    elif a is not b and b=='learn':
+    elif a is not b and b =='learn':
         return 3
     else:
-        return 'comparison not possible'
+        return 'comparison is not possible'
 
 #while
 def ask_user():
     answers={"привет": "И тебе привет!",
  "как дела": "Лучше всех", 
  "пока": "Увидимся"}
-    while True:
-        answer = input("Как дела?")
-        if answer == "Хорошо!":
-            break
-        else:
-            try:
+    try:
+        while True:
+            answer = input("Как дела?")
+            if answer in answers:
                 print(answers[answer])
-            except KeyError:
-                pass
-            except KeyboardInterrupt:
-                print ("Пока")
+            elif answer == "Хорошо":
                 break
+    except KeyboardInterrupt:
+        print ("Пока")
+        return
+ask_user()
+
+# for
+school = [{'school_class': '4a', 'scores': [3,4,4,5,2]},
+{'school_class': '5a', 'scores': [3,4,2,4,2]}, 
+{'school_class': '7a', 'scores': [3,4,4,5,2]},  ]
+total_ave_score = 0
+total_stud = 0
+
+for class_ in school:
+    scores = class_["scores"]
+    total_ave_score += sum(scores)
+    total_stud += len(scores)
+    average_score = (sum(scores)/len(scores))
+    print("Средняя оценка класса {} - {} баллов".format(class_["school_class"], average_score))
+print("Средняя оценка в школе {}".format(total_ave_score/total_stud))
+
 
 #exceptions
 def get_summ(num_one, num_two):
     try:
         summ = int(num_one)+int(num_two)
     except ValueError:
-        return("It's not a numbers")                
+        return("It's not a numbers")   
 
-
-# цикл for,практика
-list=[1, 2, 3, 4, 5, 6, 7, 8, 11, 17, ]
-for num in list:
-	print(num + 1)
-
-string=str(input())
-for s in string: 
-	print(s)
-
-# цикл for задание
-list=[{'school_class': '4a', 'scores': [3,4,4,5,2]}, 
-{'school_class': '5a', 'scores': [5,4,4,5,4]}, ]
-
-def average_score(scores):
-    return float(sum(scores)/len(scores))
-
-# computation of average scores in class
-for class_ in list:
-    print("Средняя оценка в классе {} {} ".format(class_['school_class'], 
-   average_score(class_['scores'])))
-
-# computation of average scores in school
-all_scores=[]
-for class_ in list:
-    for score in class_['scores']:
-        all_scores.append(score)
-print("Средняя оценка в школе {} ".format(average_score(all_scores)))
-
-
-answers={"привет": "И тебе привет!",
- "как дела": "Лучше всех", 
- "пока": "Увидимся"}
-
-
-def get_answer(question, answers):
-    try:
-        return(answers[question])
-    except KeyError:
-    	return ("Не знаю, что ответить.")
-    except KeyboardInterrupt:
-        return ("Пока")
-
-def asc_users(answers):
-    while True:
-        user_input = input("Скажи что-нибудь:")
-        answer = get_answer(user_input, answers)
-        print(answer)
-        if user_input == "пока":
-            break
-
-asc_users(answers)

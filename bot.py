@@ -9,9 +9,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                     filename='bot.log'
                     )
 import settings
-import cities
 import ephem
-import cities
 from datetime import datetime, date
 date = datetime.now()
 
@@ -39,37 +37,37 @@ def constellation(bot, update, args):
     if planet.lower() == 'меркурий':
         planet = ephem.Mercury(date)
         planet = ephem.constellation(planet)
-        update.message.reply_text("Меркурий в созвездии {}".format(planet))
+        update.message.reply_text("Меркурий в созвездии {}".format(planet[1]))
 
     elif planet.lower() == 'венера':
         planet = ephem.Venus(date)
         planet = ephem.constellation(planet)
-        update.message.reply_text("Венера в созвездии {}".format(planet))
+        update.message.reply_text("Венера в созвездии {}".format(planet[1]))
 
     elif planet.lower() == 'марс':
         planet = ephem.Mars(date)
         planet = ephem.constellation(planet)
-        update.message.reply_text("Марс в созвездии {}".format(planet))
+        update.message.reply_text("Марс в созвездии {}".format(planet[1]))
 
     elif planet.lower() == 'юпитер':
         planet = ephem.Jupiter (date)
         planet = ephem.constellation(planet)
-        update.message.reply_text("Юпитер в созвездии {}".format(planet))
+        update.message.reply_text("Юпитер в созвездии {}".format(planet[1]))
 
     elif planet.lower() == 'сатурн':
         planet = ephem.Saturn(date)
         planet = ephem.constellation(planet)
-        update.message.reply_text("Сатурн в созвездии {}".format(planet))
+        update.message.reply_text("Сатурн в созвездии {}".format(planet[1]))
 
     elif planet.lower() == 'уран':
         planet = ephem.Uranus(date)
         planet = ephem.constellation(planet)
-        update.message.reply_text("Уран в созвездии {}".format(planet))
+        update.message.reply_text("Уран в созвездии {}".format(planet[1]))
 
     elif planet.lower() == 'нептун':
         planet = ephem.Neptune(date)
         planet = ephem.constellation(planet)
-        update.message.reply_text("Нептун в созвездии {}".format(planet)) 
+        update.message.reply_text("Нептун в созвездии {}".format(planet[1])) 
     else: 
         update.message.reply_text("Я знаю только семь планет солнечной системы: Меркурий, Марс, Венеру, Юпитер, Уран, Нептун, Сатурн.")
 
@@ -171,7 +169,6 @@ def main():
     dp.add_handler(CommandHandler("calculator", calc, pass_args=True))
     dp.add_handler(CommandHandler("wcalc", wcalc, pass_args=True))
     dp.add_handler(CommandHandler("fullmoon", moon, pass_args=True))
-    dp.add_handler(CommandHandler("cities", cities, pass_args=True))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
 
 

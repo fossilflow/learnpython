@@ -22,10 +22,10 @@ bool'' # исключение InvalidSyntax
 #сложные типы данных
 weather = {"city":"Москва", "temperature":20}
 print(weather["city"]) #значение по ключу city
-weather["temperature"] = 15 #уменьшение t на 5С
+weather["temperature"] -= 5 #уменьшение t на 5С
 print(weather)
 print ("country" in weather)
-weather[country] = "Россия"
+print(weather.get("country", "Россия"))
 weather["date"]="27.05.2017"
 print(len(weather))
 
