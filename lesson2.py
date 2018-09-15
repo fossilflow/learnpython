@@ -61,4 +61,3 @@ def get_summ(num_one, num_two):
         summ = int(num_one)+int(num_two)
     except ValueError:
         return("It's not a numbers")   
-
