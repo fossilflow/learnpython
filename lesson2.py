@@ -2,9 +2,9 @@
 age=int(input('Введите ваш возраст:'))
 if age < 7:
     print('Вы ходите в детский сад')
-elif 7 <= age < 16:
+elif < 16:
     print('Вы учитесь в школе')
-elif 16 <= age < 23:
+elif age < 23:
     print('Вы учитесь в институте')
 else:
     print('Вы работаете') 
@@ -17,7 +17,7 @@ def comparator(a, b):
         return 1
     elif len(a) >len (b):
         return 2 
-    elif a is not b and b =='learn':
+    elif a != b and b =='learn':
         return 3
     else:
         return 'comparison is not possible'
