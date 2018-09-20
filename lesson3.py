@@ -24,7 +24,7 @@ with open(r"referat.txt", 'r') as ref:
     words=text.split()
     print(len(words))
     text = text.replace(".", "!")
-with open("referat2.txt", "w") as ref2:
+with open("referat2.txt", "w",  encoding='utf-8') as ref2:
 	ref2.write(text)
 
 #csv
